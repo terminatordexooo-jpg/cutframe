@@ -177,6 +177,10 @@ img { max-width: 100%; display: block; }
   line-height: 0.88; letter-spacing: -0.04em; color: #fff;
   margin-bottom: 28px;
   animation: fadeUp 0.7s 0.2s both;
+  max-width: 100%;
+  word-break: break-word;
+  overflow-wrap: anywhere;
+  hyphens: auto;
 }
 
 .hero__h1-yellow {
@@ -293,8 +297,8 @@ img { max-width: 100%; display: block; }
 }
 
 .stat-cell {
-  padding: 60px 48px;
-  position: relative; overflow: hidden;
+  padding: 60px 32px;
+  position: relative; overflow: visible;
   transition: background 0.3s var(--ease);
 }
 .stat-cell--border { border-right: 1px solid var(--border); }
@@ -311,11 +315,12 @@ img { max-width: 100%; display: block; }
 .stat-cell:hover::before { transform: scaleX(1); }
 
 .stat-num {
-  font-size: 80px; font-weight: 900;
+  font-size: clamp(48px, 5vw, 72px); font-weight: 900;
   letter-spacing: -0.04em; line-height: 1; color: var(--yellow);
   margin-bottom: 12px;
+  white-space: nowrap;
 }
-.stat-label { font-size: 13px; color: var(--text-2); line-height: 1.5; max-width: 180px; }
+.stat-label { font-size: 13px; color: var(--text-2); line-height: 1.5; }
 
 /* =========================================================
    SERVICES
@@ -372,30 +377,35 @@ img { max-width: 100%; display: block; }
    ========================================================= */
 
 .work-grid-fullbleed {
-  display: grid; grid-template-columns: repeat(3, 1fr);
-  gap: 4px;
+  display: grid; grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
   margin-top: 64px;
+  padding: 0 40px;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .thumb {
-  position: relative; aspect-ratio: 16/9; overflow: hidden; cursor: pointer;
-  transition: box-shadow 0.3s var(--ease);
+  position: relative; overflow: hidden;
+  border-radius: var(--r-lg);
+  border: 1px solid var(--border);
+  transition: border-color 0.3s var(--ease), transform 0.3s var(--ease);
+  background: var(--bg-1);
 }
-.thumb:hover { box-shadow: inset 0 0 0 2px var(--yellow); }
+.thumb:hover { border-color: var(--border-2); transform: translateY(-4px); }
 
-.thumb__tag {
-  position: absolute; bottom: 11px; left: 11px; z-index: 3;
-  font-size: 9.5px; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase;
-  color: rgba(255,255,255,0.5); background: rgba(0,0,0,0.6);
-  padding: 3px 8px; border-radius: 4px;
+.thumb--video {
+  aspect-ratio: auto;
 }
 
-.thumb--1 { background: linear-gradient(145deg, #0d0d1e 0%, #1a0d38 60%, #0f1a3a 100%); }
-.thumb--2 { background: linear-gradient(145deg, #120a0a 0%, #2a1010 60%, #1a1228 100%); }
-.thumb--3 { background: linear-gradient(145deg, #080e18 0%, #0d2034 60%, #060e1c 100%); }
-.thumb--4 { background: linear-gradient(145deg, #0a0818 0%, #180a30 60%, #0d0820 100%); }
-.thumb--5 { background: linear-gradient(145deg, #060c0e 0%, #0c2028 60%, #041018 100%); }
-.thumb--6 { background: linear-gradient(145deg, #0e080a 0%, #220c14 60%, #140810 100%); }
+.thumb__iframe {
+  width: 100%;
+  min-height: 540px;
+  border: none;
+  display: block;
+  background: var(--bg-1);
+}
 
 /* =========================================================
    BIG QUOTE
@@ -532,6 +542,38 @@ img { max-width: 100%; display: block; }
   border-radius: 14px 14px 4px 14px;
 }
 .testi-time { font-size: 10px; color: var(--text-3); }
+
+/* =========================================================
+   VIDEO TESTIMONIALS
+   ========================================================= */
+
+.video-testi-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+
+.video-testi-card {
+  background: var(--bg-1);
+  border: 1px solid var(--border);
+  border-radius: var(--r-lg);
+  overflow: hidden;
+  transition: border-color 0.3s var(--ease), transform 0.3s var(--ease);
+}
+.video-testi-card:hover {
+  border-color: var(--border-2);
+  transform: translateY(-4px);
+}
+
+.video-testi-iframe {
+  width: 100%;
+  aspect-ratio: 9 / 16;
+  min-height: 520px;
+  max-height: 720px;
+  border: none;
+  display: block;
+  background: var(--bg-1);
+}
 
 /* =========================================================
    TEAM — horizontal table list
@@ -705,6 +747,7 @@ img { max-width: 100%; display: block; }
    ========================================================= */
 
 @media (max-width: 920px) {
+  .hero__h1      { font-size: clamp(48px, 8vw, 88px); }
   .nav__links    { display: none; }
   .nav__hamburger { display: flex; }
   .nav__links--open {
@@ -716,10 +759,12 @@ img { max-width: 100%; display: block; }
   .hero__float   { display: none; }
   .stats-strip   { grid-template-columns: repeat(2, 1fr); }
   .stat-num      { font-size: 56px; }
-  .work-grid-fullbleed { grid-template-columns: repeat(2, 1fr); }
+  .work-grid-fullbleed { grid-template-columns: repeat(2, 1fr); padding: 0 20px; }
   .testi-grid    { grid-template-columns: 1fr; }
   .process-list  { grid-template-columns: 1fr; }
   .pricing-grid  { grid-template-columns: 1fr; }
+  .video-testi-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+  .video-testi-iframe { min-height: 440px; }
   .team-row      { flex-direction: column; gap: 12px; }
   .team-row__bio { text-align: left; max-width: 100%; }
   .svc-row__name { font-size: clamp(26px, 5vw, 40px); }
@@ -728,7 +773,8 @@ img { max-width: 100%; display: block; }
 @media (max-width: 580px) {
   .container { padding: 0 20px; }
   .hero__content { padding: 100px 20px 80px; }
-  .hero__h1 { font-size: clamp(52px, 13vw, 80px); }
+  .hero__h1 { font-size: 44px; letter-spacing: -0.03em; line-height: 0.95; }
+  .hero__sub { font-size: 15px; padding: 0 4px; max-width: 340px; }
   .work-grid-fullbleed { grid-template-columns: 1fr; }
   .stats-strip   { grid-template-columns: repeat(2, 1fr); }
   .stat-cell     { padding: 36px 24px; }
@@ -740,5 +786,8 @@ img { max-width: 100%; display: block; }
   .services-eyebrow { margin-bottom: 32px; }
   .svc-row       { gap: 16px; }
   .svc-row__name { font-size: clamp(24px, 7vw, 36px); }
+  .video-testi-grid { grid-template-columns: 1fr; gap: 14px; padding: 0 4px; }
+  .video-testi-iframe { min-height: 520px; max-height: 640px; }
+  .video-testi-card { border-radius: var(--r); }
   .cta-h2        { font-size: clamp(60px, 14vw, 100px); }
 }

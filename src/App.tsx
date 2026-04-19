@@ -107,82 +107,80 @@ const CLIENTS = [
 
 const STATS = [
   { num: '200+',  label: 'Videos delivered every month' },
-  { num: '48h',   label: 'Average turnaround time' },
-  { num: '↑6.8%', label: 'Average CTR improvement' },
-  { num: '3×',    label: 'Faster than in-house editing' },
+  { num: '48h',   label: 'Average turnaround' },
+  { num: '↑6.8%', label: 'Average CTR lift' },
+  { num: '3×',    label: 'Faster than hiring in-house' },
 ];
 
-const TICKER_A = ['Short-form Reels', 'YouTube Long-form', 'Thumbnails', 'Brand Consistency', 'Fast Turnaround', 'Unlimited Revisions', 'Dedicated Editor'];
-const TICKER_B = ['48h Delivery', 'No Long Contracts', 'Real Editors', 'Ukrainian Team', 'CTR-Optimised', 'QA Every File', 'Same-day Response'];
+const TICKER_A = ['Short-form reels', 'YouTube long-form', 'Thumbnails', 'On-brand consistency', 'Fast turnaround', 'Unlimited revisions', 'Dedicated editor'];
+const TICKER_B = ['48h delivery', 'No long contracts', 'Real human editors', 'Ukrainian team', 'CTR-optimized', 'QA on every file', 'Same-day replies'];
 
 const THUMBS = [
-  { id: 1, tag: 'YouTube Cut',  label: 'Long-form' },
-  { id: 2, tag: 'Short Reel',   label: 'Reel' },
-  { id: 3, tag: 'Thumbnail',    label: 'Design' },
-  { id: 4, tag: 'Long-form',    label: 'Podcast' },
-  { id: 5, tag: 'Short Reel',   label: 'TikTok' },
-  { id: 6, tag: 'Thumbnail',    label: 'Design' },
+  { id: 1, tag: 'Video Testimonial', instagram: 'https://www.instagram.com/p/DU07FgIEV7z/embed' },
+  { id: 2, tag: 'Video Testimonial', instagram: 'https://www.instagram.com/p/DTnWQpKjXHI/embed' },
+  { id: 3, tag: 'Video Testimonial', instagram: 'https://www.instagram.com/p/DKQ7tX8tMK1/embed' },
+  { id: 4, tag: 'Video Testimonial', instagram: 'https://www.instagram.com/p/DMflFPTRVmQ/embed' },
 ];
 
 const SERVICES_LIST = [
-  { num: '01', name: 'Short-form Reels',    sub: 'TikTok · Instagram · YouTube Shorts — cut, captioned, posted.' },
-  { num: '02', name: 'Long-form YouTube',   sub: 'Full episodes, podcasts, vlogs — chapters, b-roll, colour.' },
-  { num: '03', name: 'Thumbnails',          sub: 'CTR-optimised design built around click intent and your data.' },
-  { num: '04', name: 'Feed Consistency',    sub: 'Unified visual palette locked across every post.' },
+  { num: '01', name: 'Short-form reels',     sub: 'TikTok · Instagram · YouTube Shorts — editing, captions, publishing.' },
+  { num: '02', name: 'YouTube long-form',    sub: 'Full episodes, podcasts, vlogs — chapters, b-roll, color grading.' },
+  { num: '03', name: 'Thumbnails',           sub: 'CTR-design built around click intent and your own data.' },
+  { num: '04', name: 'Feed consistency',     sub: 'A single visual palette across every post.' },
 ];
 
 const PROCESS_STEPS = [
-  { num: '01', title: 'You send us footage',        desc: 'Raw files received same day. No special format required.' },
-  { num: '02', title: 'Your editor takes ownership', desc: 'Same editor every time. No re-briefing, no handoffs.' },
-  { num: '03', title: 'First cut in 48 hours',      desc: 'Full edit delivered. No exceptions, no excuses.' },
-  { num: '04', title: 'Revise until it\'s right',   desc: 'Unlimited rounds. You approve when it\'s perfect.' },
+  { num: '01', title: 'You send the footage',         desc: 'Files received same day. No special format required.' },
+  { num: '02', title: 'Your editor takes the project',desc: 'Same editor every time. No repeated briefs.' },
+  { num: '03', title: 'First cut in 48 hours',        desc: 'Full edit delivered. No exceptions, no excuses.' },
+  { num: '04', title: 'Revisions until it\'s perfect', desc: 'Unlimited revision rounds. You approve when it\'s right.' },
 ];
 
 const TESTIMONIALS = [
   {
     msgs: [
-      { out: false, text: 'guys the video came out exactly how i imagined it 🔥 like literally zero notes',     time: '14:32' },
-      { out: true,  text: 'so glad! CTR is at 6.8% on that one already — strong opener',                        time: '14:35' },
-      { out: false, text: 'my old editor used to take 5 days min. you sent it in 36 hours',                      time: '14:36' },
+      { out: false, text: 'the video came out exactly how I imagined it 🔥 literally zero notes',                  time: '14:32' },
+      { out: true,  text: 'love it! CTR is already at 6.8% — strong start',                                        time: '14:35' },
+      { out: false, text: 'my old editor took 5 days minimum. you sent this in 36 hours',                          time: '14:36' },
     ]
   },
   {
     msgs: [
-      { out: false, text: 'thumbnail redesign made a massive difference. went from 3.1% to 6.4% CTR in a week', time: '09:11' },
-      { out: true,  text: 'that is a solid jump. the face + contrast tweak was the main lever',                  time: '09:15' },
-      { out: false, text: 'not gonna lie i was skeptical but you guys delivered. more projects incoming',         time: '09:16' },
+      { out: false, text: 'thumbnail redesign made a huge difference. 3.1% → 6.4% CTR in one week',                time: '09:11' },
+      { out: true,  text: 'solid jump. face + contrast is the lever',                                              time: '09:15' },
+      { out: false, text: 'not gonna lie, I had doubts, but you delivered. more projects coming',                  time: '09:16' },
     ]
   },
   {
     msgs: [
-      { out: false, text: 'week 2 and my feed already looks like a completely different account',                 time: '18:04' },
-      { out: true,  text: 'consistency compounds fast. the colour lock-in was the turning point',                 time: '18:07' },
-      { out: false, text: 'my followers literally asked if i rebranded lol',                                      time: '18:08' },
+      { out: false, text: 'week 2 and my feed already looks like a completely different account',                  time: '18:04' },
+      { out: true,  text: 'consistency hits fast. color lock-in was the turning point',                            time: '18:07' },
+      { out: false, text: 'my followers literally asked if I rebranded lol',                                        time: '18:08' },
     ]
   },
 ];
 
 const TEAM = [
-  { init: 'M', name: 'Maria K.',  role: 'Lead Editor',        bio: 'Short-form and long-form specialist. 5+ years in post. Edited for channels with over 1M subscribers.' },
-  { init: 'D', name: 'Diana S.',  role: 'Motion Editor',      bio: 'Transitions, pacing, and brand consistency. Expert in building visual systems that stay coherent over time.' },
-  { init: 'A', name: 'Alex P.',   role: 'Thumbnail Designer', bio: 'CTR-driven design. Combines A/B data with visual storytelling. Every thumbnail is built around click intent.' },
-  { init: 'N', name: 'Nikita V.', role: 'QA Lead',            bio: 'Every deliverable goes through QA before it ships. Catches pacing issues, cuts, and brand inconsistencies.' },
+  { init: 'M', name: 'Maria K.', role: 'Lead editor',        bio: 'Short- and long-form specialist. 5+ years in post-production. Edits for channels with 1M+ subscribers.' },
+  { init: 'D', name: 'Diana S.', role: 'Motion editor',      bio: 'Transitions, pacing and brand consistency. Expert at building visual systems.' },
+  { init: 'A', name: 'Alex P.',  role: 'Thumbnail designer', bio: 'CTR-design. Combines A/B data with visual storytelling. Every thumbnail built around the click.' },
+  { init: 'N', name: 'Nikita V.',role: 'QA lead',            bio: 'Every file passes QA before it ships. Catches pacing, cut and brand-style issues.' },
 ];
 
 const PLANS = [
   {
     tier: 'Starter', price: '799',
-    items: ['4 short-form videos / week', 'Basic colour correction', 'Captions & subtitles', '3-day turnaround', '2 revision rounds'],
+    items: ['4 short videos / week', 'Basic color grade', 'Captions and subtitles', '3-day turnaround', '2 revision rounds'],
     feat: false,
   },
   {
     tier: 'Creator', price: '1,499',
-    items: ['8 short-form videos / week', '2 long-form YouTube cuts / month', 'Thumbnail design included', '48 h turnaround', 'Unlimited revisions', 'Dedicated editor'],
+    items: ['8 short videos / week', '2 YouTube edits / month', 'Thumbnail design included', '48-hour turnaround', 'Unlimited revisions', 'Dedicated editor'],
     feat: true,
   },
   {
     tier: 'Studio', price: '2,499',
-    items: ['Unlimited short-form', 'Unlimited long-form', 'Full thumbnail & cover system', '24 h priority turnaround', 'Dedicated team of 2', 'Weekly strategy call'],
+    items: ['Unlimited short videos', 'Unlimited long-form', 'Full thumbnail system', 'Priority 24h turnaround', '2-person team', 'Weekly strategy call'],
     feat: false,
   },
 ];
@@ -225,11 +223,12 @@ function Nav() {
       <div className="nav__inner">
         <a href="#top" className="nav__logo">CUTFRAME</a>
         <div className={`nav__links${open ? ' nav__links--open' : ''}`}>
-          <a href="#work"    className="nav__link" onClick={close}>Work</a>
-          <a href="#process" className="nav__link" onClick={close}>Process</a>
-          <a href="#team"    className="nav__link" onClick={close}>Team</a>
-          <a href="#pricing" className="nav__link" onClick={close}>Pricing</a>
-          <a href="#contact" className="nav__cta"  onClick={close}>Start a project →</a>
+          <a href="#video-reviews" className="nav__link" onClick={close}>Work</a>
+          <a href="#process"       className="nav__link" onClick={close}>Process</a>
+          <a href="#team"          className="nav__link" onClick={close}>Team</a>
+          <a href="#pricing"       className="nav__link" onClick={close}>Pricing</a>
+          <a href="v2/"            className="nav__link" onClick={close}>Founders</a>
+          <a href="#contact"       className="nav__cta"  onClick={close}>Start a project →</a>
         </div>
         <button className="nav__hamburger" onClick={() => setOpen(v => !v)} aria-label="Toggle menu">
           {open ? '✕' : '≡'}
@@ -278,7 +277,7 @@ function Hero() {
       <div className="hero__overlay" />
 
       <div className="hero__content">
-        <div className="hero__badge">Ukrainian editors 🇺🇦</div>
+        <div className="hero__badge">Ukrainian video editors 🇺🇦</div>
 
         <h1 className="hero__h1">
           Stop <span className="hero__h1-yellow">editing</span><br />
@@ -286,13 +285,13 @@ function Hero() {
         </h1>
 
         <p className="hero__sub">
-          A team of Ukrainian video editors handles your full post-production —
-          reels, YouTube cuts, thumbnails. You record. We ship.
+          A team of Ukrainian video editors takes over your post-production —
+          reels, YouTube edits, thumbnails. You shoot. We ship.
         </p>
 
         <div className="hero__actions">
           <a href="#contact" className="btn-primary">Start a project →</a>
-          <a href="#work"    className="btn-ghost">See our work</a>
+          <a href="#video-reviews" className="btn-ghost">See the work</a>
         </div>
       </div>
 
@@ -300,7 +299,7 @@ function Hero() {
       <div className="hero__float" ref={floatRef}>
         <div className="hero__float-icon">✓</div>
         <div>
-          <div className="hero__float-title">YouTube Ep. 46 — Ready</div>
+          <div className="hero__float-title">YouTube Ep. 46 — Done</div>
           <div className="hero__float-sub">Delivered · 2 minutes ago</div>
         </div>
       </div>
@@ -404,15 +403,23 @@ function Work() {
     <section className="section" id="work">
       <div className="container">
         <div className="section-header reveal">
-          <div className="section-num">Recent work</div>
-          <h2 className="section-h2">Thumbnails, reels,<br />long-form cuts.</h2>
+          <div className="section-num">Our work</div>
+          <h2 className="section-h2">Client video<br />testimonials.</h2>
         </div>
       </div>
 
       <div className="work-grid-fullbleed reveal">
         {THUMBS.map(t => (
-          <div key={t.id} className={`thumb thumb--${t.id}`}>
-            <span className="thumb__tag">{t.tag}</span>
+          <div key={t.id} className="thumb thumb--video">
+            <iframe
+              src={t.instagram}
+              frameBorder="0"
+              scrolling="no"
+              allowTransparency
+              allow="encrypted-media"
+              title={t.tag}
+              className="thumb__iframe"
+            />
           </div>
         ))}
       </div>
@@ -430,9 +437,9 @@ function BigQuote() {
       <div className="quote-inner reveal">
         <div className="quote-mark">"</div>
         <p className="quote-text">
-          Went from 3% to 6.4% CTR in the first week. My old editor took five days. These guys sent it in 36 hours.
+          From 3% to 6.4% CTR in the first week. My old editor took five days. These guys shipped it in 36 hours.
         </p>
-        <div className="quote-attr">— @contentcraft_ua · 240K subscribers</div>
+        <div className="quote-attr">— @contentcraft_ua · 240K followers</div>
       </div>
     </section>
   );
@@ -447,7 +454,7 @@ function Process() {
     <section className="section" id="process">
       <div className="container">
         <div className="section-header reveal">
-          <div className="section-num">How we work</div>
+          <div className="section-num">How it works</div>
           <h2 className="section-h2">Simple.<br />Repeatable.<br />Reliable.</h2>
         </div>
 
@@ -479,7 +486,7 @@ function Testimonials() {
     <section className="section section--alt">
       <div className="container">
         <div className="section-header reveal">
-          <div className="section-num">Reviews</div>
+          <div className="section-num">Testimonials</div>
           <h2 className="section-h2">Real messages.<br />Real results.</h2>
         </div>
 
@@ -507,6 +514,46 @@ function Testimonials() {
 }
 
 /* =====================================================================
+   VIDEO TESTIMONIALS
+   ===================================================================== */
+
+const VIDEO_TESTIMONIALS = [
+  { url: 'https://www.instagram.com/p/DU07FgIEV7z/', caption: 'Thank you Tayo' },
+  { url: 'https://www.instagram.com/p/DTnWQpKjXHI/', caption: 'Thank you, Carter' },
+  { url: 'https://www.instagram.com/p/DKQ7tX8tMK1/', caption: 'Client testimonial' },
+  { url: 'https://www.instagram.com/p/DMflFPTRVmQ/', caption: 'Thank you Jeremy' },
+];
+
+function VideoTestimonials() {
+  return (
+    <section className="section" id="video-reviews">
+      <div className="container">
+        <div className="section-header reveal">
+          <div className="section-num">Real founders. Real editors. Real outcomes.</div>
+          <h2 className="section-h2">Video testimonials.</h2>
+        </div>
+
+        <div className="video-testi-grid reveal">
+          {VIDEO_TESTIMONIALS.map((v, i) => (
+            <div key={i} className="video-testi-card">
+              <iframe
+                src={`${v.url}embed`}
+                frameBorder="0"
+                scrolling="no"
+                allowTransparency
+                allow="encrypted-media"
+                title={v.caption}
+                className="video-testi-iframe"
+              />
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* =====================================================================
    TEAM
    ===================================================================== */
 
@@ -515,7 +562,7 @@ function Team() {
     <section className="section" id="team">
       <div className="container">
         <div className="section-header reveal">
-          <div className="section-num">The team</div>
+          <div className="section-num">Team</div>
           <h2 className="section-h2">The editors</h2>
         </div>
 
@@ -565,7 +612,7 @@ function Pricing() {
         <div className="section-header section-header--center reveal">
           <div className="section-num">Pricing</div>
           <h2 className="section-h2">Simple pricing</h2>
-          <p className="section-sub">No hidden fees. No long-term lock-in. Cancel any month.</p>
+          <p className="section-sub">No hidden fees. No long-term commitments. Cancel any month.</p>
         </div>
 
         <div className="pricing-grid reveal">
@@ -606,12 +653,12 @@ function CTA() {
           <div className="cta-eyebrow">Ready?</div>
           <h2 className="cta-h2">Let's work.</h2>
           <p className="cta-sub">
-            Tell us about your content. We'll match you with the right editor
-            and deliver a sample cut within 48 hours — no commitment.
+            Tell us about your content. We'll match the right editor
+            and deliver a trial edit in 48 hours — no commitment.
           </p>
           <div className="cta-btns">
-            <a href="https://t.me/cutframe" className="btn-primary btn-primary--lg">
-              Write on Telegram →
+            <a href="https://calendly.com/pechenchis/strategy-call" target="_blank" rel="noopener noreferrer" className="btn-primary btn-primary--lg">
+              Book a strategy call →
             </a>
             <a href="mailto:hello@cutframe.studio" className="btn-ghost btn-ghost--lg">
               hello@cutframe.studio
@@ -633,10 +680,11 @@ function Footer() {
       <div className="footer__inner">
         <span className="footer__logo">CUTFRAME</span>
         <div className="footer__links">
-          <a href="#work"    className="footer__link">Work</a>
-          <a href="#process" className="footer__link">Process</a>
-          <a href="#pricing" className="footer__link">Pricing</a>
-          <a href="#contact" className="footer__link">Contact</a>
+          <a href="#video-reviews" className="footer__link">Work</a>
+          <a href="#process"       className="footer__link">Process</a>
+          <a href="#pricing"       className="footer__link">Pricing</a>
+          <a href="v2/"            className="footer__link">Founders</a>
+          <a href="#contact"       className="footer__link">Contact</a>
         </div>
         <span className="footer__copy">© 2025 Cutframe</span>
       </div>
@@ -659,11 +707,11 @@ export default function App() {
       <Marquee items={TICKER_A} />
       <Stats />
       <Services />
-      <Work />
       <BigQuote />
       <Process />
       <Marquee items={TICKER_B} reverse />
       <Testimonials />
+      <VideoTestimonials />
       <Team />
       <Pricing />
       <CTA />
