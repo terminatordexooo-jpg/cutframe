@@ -106,28 +106,76 @@
   font-weight: 700;
   min-height: 140px;
 }
-.v2-work-card__visual--embed {
-  padding: 0;
+/* Clickable preview cards (Work) */
+a.v2-work-card,
+a.v2-work-card--link {
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+  display: flex;
+}
+a.v2-work-card:hover { border-color: var(--yellow-bd); }
+
+.v2-work-card__visual--video,
+.v2-work-card__visual--instagram {
+  position: relative;
+  min-height: 220px;
   border: 1px solid var(--border);
-  background: #000;
   overflow: hidden;
-  min-height: 360px;
-  height: 360px;
 }
-.v2-work-card__iframe {
-  width: 100%;
-  height: 100%;
-  border: 0;
-  display: block;
-  background: #000;
+.v2-work-card__visual--video {
+  background:
+    radial-gradient(circle at 30% 30%, rgba(255,214,0,0.12) 0%, transparent 60%),
+    radial-gradient(circle at 70% 70%, rgba(255,214,0,0.06) 0%, transparent 50%),
+    linear-gradient(135deg, #1a1a1a 0%, #0a0a0a 100%);
 }
-.v2-work-card--embed { min-height: 0; }
+.v2-work-card__visual--instagram {
+  background:
+    radial-gradient(circle at 25% 25%, #f09433 0%, transparent 35%),
+    radial-gradient(circle at 75% 25%, #e6683c 0%, transparent 35%),
+    radial-gradient(circle at 75% 75%, #dc2743 0%, transparent 35%),
+    radial-gradient(circle at 25% 75%, #bc1888 0%, transparent 35%),
+    linear-gradient(135deg, #515bd4 0%, #8134af 50%, #dd2a7b 100%);
+  color: #fff;
+}
+.v2-work-card__play {
+  font-size: 26px;
+  color: #fff;
+  width: 72px; height: 72px;
+  border-radius: 50%;
+  background: rgba(255,214,0,0.18);
+  border: 2px solid var(--yellow);
+  display: flex; align-items: center; justify-content: center;
+  padding-left: 6px;
+  transition: transform 0.3s var(--ease), background 0.3s var(--ease);
+}
+.v2-work-card__ig-icon {
+  display: inline-flex;
+  color: #fff;
+  filter: drop-shadow(0 4px 14px rgba(0,0,0,0.35));
+  transition: transform 0.3s var(--ease);
+}
+.v2-work-card__visual-arrow {
+  position: absolute;
+  top: 12px; right: 14px;
+  font-size: 20px;
+  font-weight: 700;
+  color: rgba(255,255,255,0.7);
+  transition: transform 0.3s var(--ease), color 0.3s var(--ease);
+}
+a.v2-work-card:hover .v2-work-card__play { transform: scale(1.08); background: rgba(255,214,0,0.28); }
+a.v2-work-card:hover .v2-work-card__ig-icon { transform: scale(1.08); }
+a.v2-work-card:hover .v2-work-card__visual-arrow { color: #fff; transform: translate(2px, -2px); }
+.v2-work-card__cta {
+  margin-top: 12px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  color: var(--yellow);
+  text-transform: uppercase;
+}
 @media (max-width: 920px) {
   .v2-work-grid { grid-template-columns: 1fr; }
-  .v2-work-card__visual--embed { min-height: 420px; height: 420px; }
-}
-@media (max-width: 580px) {
-  .v2-work-card__visual--embed { min-height: 380px; height: 380px; }
 }
 
 /* Case studies */
@@ -302,27 +350,67 @@
   opacity: 1;
 }
 
-/* v2 — instagram reel embeds: force the right height, hide their footer */
+/* v2 — Video testimonial preview cards (clickable, link to IG) */
 .video-testi-card {
   border-radius: var(--r-lg);
   overflow: hidden;
   background: var(--bg-1);
+  border: 1px solid var(--border);
 }
-.video-testi-iframe {
-  width: 100%;
-  aspect-ratio: auto;
-  height: 660px;
-  min-height: 0;
-  max-height: none;
-  border: none;
-  display: block;
-  background: #000;
+.video-testi-card--link {
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+  padding: 0;
+  transition: border-color 0.3s var(--ease), transform 0.3s var(--ease);
 }
-@media (max-width: 920px) {
-  .video-testi-iframe { height: 620px; }
+.video-testi-card--link:hover {
+  border-color: var(--yellow-bd);
+  transform: translateY(-4px);
 }
-@media (max-width: 580px) {
-  .video-testi-iframe { height: 640px; }
+.video-testi-card__visual {
+  position: relative;
+  aspect-ratio: 9 / 14;
+  background:
+    radial-gradient(circle at 25% 25%, #f09433 0%, transparent 40%),
+    radial-gradient(circle at 75% 25%, #e6683c 0%, transparent 40%),
+    radial-gradient(circle at 75% 75%, #dc2743 0%, transparent 40%),
+    radial-gradient(circle at 25% 75%, #bc1888 0%, transparent 40%),
+    linear-gradient(135deg, #515bd4 0%, #8134af 50%, #dd2a7b 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+}
+.video-testi-card__ig {
+  display: inline-flex;
+  filter: drop-shadow(0 4px 14px rgba(0,0,0,0.4));
+  transition: transform 0.3s var(--ease);
+}
+.video-testi-card--link:hover .video-testi-card__ig { transform: scale(1.1); }
+.video-testi-card__arrow {
+  position: absolute;
+  top: 12px; right: 14px;
+  font-size: 18px;
+  font-weight: 700;
+  color: rgba(255,255,255,0.8);
+}
+.video-testi-card__caption {
+  padding: 18px 20px 4px;
+  font-size: 15px;
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: -0.01em;
+}
+.video-testi-card__cta {
+  padding: 0 20px 20px;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  color: var(--yellow);
+  text-transform: uppercase;
 }
 
 /* v2 stats — allow long labels like "Same-day" to wrap on small screens */

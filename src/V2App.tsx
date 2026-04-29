@@ -120,22 +120,34 @@ const PROBLEMS = [
   },
 ];
 
-const WORK = [
+type WorkItem = {
+  tag: string;
+  title: string;
+  sub: string;
+  slot: string;
+  link?: string;
+  preview?: 'video' | 'instagram';
+  cta?: string;
+};
+
+const WORK: WorkItem[] = [
   {
     tag: 'Raw → Final clip',
     title: 'Zoom call → platform-native shorts',
     sub: 'Captions, pattern interrupts, and a clear CTA — all from one raw recording.',
     slot: 'Before / After',
-    embed: 'https://next.frame.io/share/92482fba-3801-4bcc-ac72-d88308a3603b/view/e83b2710-6c97-48a8-bc5f-a501be888881',
-    embedType: 'frameio' as const,
+    link: 'https://next.frame.io/share/92482fba-3801-4bcc-ac72-d88308a3603b/view/e83b2710-6c97-48a8-bc5f-a501be888881',
+    preview: 'video',
+    cta: 'Watch the edit',
   },
   {
     tag: 'Feed transformation',
     title: '1–2 posts/month → 2–3 posts/day',
     sub: 'Before: dusty feed. After: structured grid in under 60 days.',
     slot: 'Feed grid',
-    embed: 'https://www.instagram.com/p/DVQyFhHkSYI/embed',
-    embedType: 'instagram' as const,
+    link: 'https://www.instagram.com/p/DVQyFhHkSYI/',
+    preview: 'instagram',
+    cta: 'View on Instagram',
   },
   {
     tag: 'Multi-platform repurposing',
@@ -471,30 +483,47 @@ function Work() {
         </div>
         <div className="v2-work-grid reveal">
           {WORK.map((w, i) => {
-            const hasEmbed = 'embed' in w && typeof w.embed === 'string';
-            return (
-              <div key={i} className={`v2-work-card${hasEmbed ? ' v2-work-card--embed' : ''}`}>
-                {hasEmbed ? (
-                  <div className="v2-work-card__visual v2-work-card__visual--embed">
-                    <iframe
-                      src={(w as { embed: string }).embed}
-                      className="v2-work-card__iframe"
-                      frameBorder="0"
-                      scrolling="no"
-                      allow="encrypted-media; autoplay; fullscreen"
-                      allowFullScreen
-                      title={w.title}
-                    />
-                  </div>
-                ) : (
-                  <div className="v2-work-card__visual">{w.slot}</div>
-                )}
+            const inner = (
+              <>
+                <div className={`v2-work-card__visual${w.preview ? ` v2-work-card__visual--${w.preview}` : ''}`}>
+                  {w.preview === 'video' && (
+                    <>
+                      <span className="v2-work-card__play" aria-hidden>▶</span>
+                      <span className="v2-work-card__visual-arrow" aria-hidden>↗</span>
+                    </>
+                  )}
+                  {w.preview === 'instagram' && (
+                    <>
+                      <span className="v2-work-card__ig-icon" aria-hidden>
+                        <svg viewBox="0 0 24 24" width="44" height="44" fill="currentColor" aria-hidden>
+                          <path d="M12 2.2c3.2 0 3.6 0 4.85.07 1.17.05 1.8.25 2.23.41a3.7 3.7 0 0 1 1.38.9 3.7 3.7 0 0 1 .9 1.38c.16.42.36 1.06.41 2.23.06 1.25.07 1.62.07 4.85s0 3.6-.07 4.85c-.05 1.17-.25 1.8-.41 2.23a3.7 3.7 0 0 1-.9 1.38 3.7 3.7 0 0 1-1.38.9c-.42.16-1.06.36-2.23.41-1.25.06-1.62.07-4.85.07s-3.6 0-4.85-.07c-1.17-.05-1.8-.25-2.23-.41a3.7 3.7 0 0 1-1.38-.9 3.7 3.7 0 0 1-.9-1.38c-.16-.42-.36-1.06-.41-2.23C2.2 15.6 2.2 15.23 2.2 12s0-3.6.07-4.85c.05-1.17.25-1.8.41-2.23a3.7 3.7 0 0 1 .9-1.38 3.7 3.7 0 0 1 1.38-.9c.42-.16 1.06-.36 2.23-.41C8.4 2.2 8.77 2.2 12 2.2zm0 1.95c-3.18 0-3.55 0-4.79.07-.99.04-1.53.21-1.88.35-.47.18-.81.4-1.16.75s-.57.69-.75 1.16c-.14.36-.31.9-.35 1.88C3 8.6 3 8.97 3 12s0 3.4.07 4.64c.04.99.21 1.53.35 1.88.18.47.4.81.75 1.16s.69.57 1.16.75c.36.14.9.31 1.88.35C8.45 21 8.82 21 12 21s3.55 0 4.79-.07c.99-.04 1.53-.21 1.88-.35.47-.18.81-.4 1.16-.75s.57-.69.75-1.16c.14-.36.31-.9.35-1.88.07-1.24.07-1.61.07-4.79s0-3.55-.07-4.79c-.04-.99-.21-1.53-.35-1.88a3.07 3.07 0 0 0-.75-1.16 3.07 3.07 0 0 0-1.16-.75c-.36-.14-.9-.31-1.88-.35C15.55 4.15 15.18 4.15 12 4.15zm0 3.32a4.53 4.53 0 1 1 0 9.06 4.53 4.53 0 0 1 0-9.06zm0 1.95a2.58 2.58 0 1 0 0 5.16 2.58 2.58 0 0 0 0-5.16zm4.75-2.05a1.06 1.06 0 1 1 0 2.12 1.06 1.06 0 0 1 0-2.12z"/>
+                        </svg>
+                      </span>
+                      <span className="v2-work-card__visual-arrow" aria-hidden>↗</span>
+                    </>
+                  )}
+                  {!w.preview && <span>{w.slot}</span>}
+                </div>
                 <div>
                   <div className="v2-work-card__tag">{w.tag}</div>
                   <div className="v2-work-card__title">{w.title}</div>
                   <div className="v2-work-card__sub">{w.sub}</div>
+                  {w.cta && <div className="v2-work-card__cta">{w.cta} →</div>}
                 </div>
-              </div>
+              </>
+            );
+            return w.link ? (
+              <a
+                key={i}
+                href={w.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="v2-work-card v2-work-card--link"
+              >
+                {inner}
+              </a>
+            ) : (
+              <div key={i} className="v2-work-card">{inner}</div>
             );
           })}
         </div>
@@ -572,17 +601,24 @@ function VideoTestimonials() {
         </div>
         <div className="video-testi-grid reveal">
           {VIDEO_TESTIMONIALS.map((v, i) => (
-            <div key={i} className="video-testi-card">
-              <iframe
-                src={`${v.url}embed`}
-                frameBorder="0"
-                scrolling="no"
-                allowTransparency
-                allow="encrypted-media"
-                title={v.caption}
-                className="video-testi-iframe"
-              />
-            </div>
+            <a
+              key={i}
+              href={v.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="video-testi-card video-testi-card--link"
+            >
+              <div className="video-testi-card__visual">
+                <span className="video-testi-card__ig" aria-hidden>
+                  <svg viewBox="0 0 24 24" width="36" height="36" fill="currentColor" aria-hidden>
+                    <path d="M12 2.2c3.2 0 3.6 0 4.85.07 1.17.05 1.8.25 2.23.41a3.7 3.7 0 0 1 1.38.9 3.7 3.7 0 0 1 .9 1.38c.16.42.36 1.06.41 2.23.06 1.25.07 1.62.07 4.85s0 3.6-.07 4.85c-.05 1.17-.25 1.8-.41 2.23a3.7 3.7 0 0 1-.9 1.38 3.7 3.7 0 0 1-1.38.9c-.42.16-1.06.36-2.23.41-1.25.06-1.62.07-4.85.07s-3.6 0-4.85-.07c-1.17-.05-1.8-.25-2.23-.41a3.7 3.7 0 0 1-1.38-.9 3.7 3.7 0 0 1-.9-1.38c-.16-.42-.36-1.06-.41-2.23C2.2 15.6 2.2 15.23 2.2 12s0-3.6.07-4.85c.05-1.17.25-1.8.41-2.23a3.7 3.7 0 0 1 .9-1.38 3.7 3.7 0 0 1 1.38-.9c.42-.16 1.06-.36 2.23-.41C8.4 2.2 8.77 2.2 12 2.2zm0 1.95c-3.18 0-3.55 0-4.79.07-.99.04-1.53.21-1.88.35-.47.18-.81.4-1.16.75s-.57.69-.75 1.16c-.14.36-.31.9-.35 1.88C3 8.6 3 8.97 3 12s0 3.4.07 4.64c.04.99.21 1.53.35 1.88.18.47.4.81.75 1.16s.69.57 1.16.75c.36.14.9.31 1.88.35C8.45 21 8.82 21 12 21s3.55 0 4.79-.07c.99-.04 1.53-.21 1.88-.35.47-.18.81-.4 1.16-.75s.57-.69.75-1.16c.14-.36.31-.9.35-1.88.07-1.24.07-1.61.07-4.79s0-3.55-.07-4.79c-.04-.99-.21-1.53-.35-1.88a3.07 3.07 0 0 0-.75-1.16 3.07 3.07 0 0 0-1.16-.75c-.36-.14-.9-.31-1.88-.35C15.55 4.15 15.18 4.15 12 4.15zm0 3.32a4.53 4.53 0 1 1 0 9.06 4.53 4.53 0 0 1 0-9.06zm0 1.95a2.58 2.58 0 1 0 0 5.16 2.58 2.58 0 0 0 0-5.16zm4.75-2.05a1.06 1.06 0 1 1 0 2.12 1.06 1.06 0 0 1 0-2.12z"/>
+                  </svg>
+                </span>
+                <span className="video-testi-card__arrow" aria-hidden>↗</span>
+              </div>
+              <div className="video-testi-card__caption">{v.caption}</div>
+              <div className="video-testi-card__cta">View on Instagram →</div>
+            </a>
           ))}
         </div>
       </div>
