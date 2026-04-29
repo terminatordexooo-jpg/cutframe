@@ -350,67 +350,31 @@ a.v2-work-card:hover .v2-work-card__visual-arrow { color: #fff; transform: trans
   opacity: 1;
 }
 
-/* v2 — Video testimonial preview cards (clickable, link to IG) */
+/* v2 — Video testimonials: real Instagram embeds via blockquote + embed.js */
+.video-testi-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(326px, 1fr)) !important;
+  gap: 16px;
+}
 .video-testi-card {
   border-radius: var(--r-lg);
   overflow: hidden;
   background: var(--bg-1);
   border: 1px solid var(--border);
-}
-.video-testi-card--link {
+  padding: 12px;
   display: flex;
-  flex-direction: column;
-  text-decoration: none;
-  color: inherit;
-  cursor: pointer;
-  padding: 0;
-  transition: border-color 0.3s var(--ease), transform 0.3s var(--ease);
-}
-.video-testi-card--link:hover {
-  border-color: var(--yellow-bd);
-  transform: translateY(-4px);
-}
-.video-testi-card__visual {
-  position: relative;
-  aspect-ratio: 9 / 14;
-  background:
-    radial-gradient(circle at 25% 25%, #f09433 0%, transparent 40%),
-    radial-gradient(circle at 75% 25%, #e6683c 0%, transparent 40%),
-    radial-gradient(circle at 75% 75%, #dc2743 0%, transparent 40%),
-    radial-gradient(circle at 25% 75%, #bc1888 0%, transparent 40%),
-    linear-gradient(135deg, #515bd4 0%, #8134af 50%, #dd2a7b 100%);
-  display: flex;
-  align-items: center;
+  align-items: stretch;
   justify-content: center;
-  color: #fff;
 }
-.video-testi-card__ig {
-  display: inline-flex;
-  filter: drop-shadow(0 4px 14px rgba(0,0,0,0.4));
-  transition: transform 0.3s var(--ease);
+.video-testi-card--ig .instagram-media {
+  width: 100% !important;
+  min-width: 0 !important;
+  max-width: 540px !important;
+  margin: 0 !important;
 }
-.video-testi-card--link:hover .video-testi-card__ig { transform: scale(1.1); }
-.video-testi-card__arrow {
-  position: absolute;
-  top: 12px; right: 14px;
-  font-size: 18px;
-  font-weight: 700;
-  color: rgba(255,255,255,0.8);
-}
-.video-testi-card__caption {
-  padding: 18px 20px 4px;
-  font-size: 15px;
-  font-weight: 700;
-  color: #fff;
-  letter-spacing: -0.01em;
-}
-.video-testi-card__cta {
-  padding: 0 20px 20px;
-  font-size: 11px;
-  font-weight: 800;
-  letter-spacing: 0.1em;
-  color: var(--yellow);
-  text-transform: uppercase;
+@media (max-width: 580px) {
+  .video-testi-grid { grid-template-columns: 1fr !important; gap: 14px; }
+  .video-testi-card { padding: 8px; }
 }
 
 /* v2 stats — allow long labels like "Same-day" to wrap on small screens */

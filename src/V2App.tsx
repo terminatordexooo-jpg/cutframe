@@ -5,6 +5,42 @@ import { LiquidEther } from './LiquidEther';
    Shared hooks (copied from App.tsx to keep V2 self-contained)
    ===================================================================== */
 
+function useInstagramEmbeds() {
+  useEffect(() => {
+    const SRC = 'https://www.instagram.com/embed.js';
+    const w = window as unknown as { instgrm?: { Embeds?: { process?: () => void } } };
+    if (!document.querySelector(`script[src="${SRC}"]`)) {
+      const s = document.createElement('script');
+      s.src = SRC;
+      s.async = true;
+      s.onload = () => { w.instgrm?.Embeds?.process?.(); };
+      document.body.appendChild(s);
+    } else {
+      w.instgrm?.Embeds?.process?.();
+    }
+  }, []);
+}
+
+function InstagramEmbed({ url }: { url: string }) {
+  return (
+    <blockquote
+      className="instagram-media"
+      data-instgrm-permalink={url}
+      data-instgrm-version="14"
+      style={{
+        background: '#000',
+        border: 0,
+        borderRadius: 12,
+        margin: 0,
+        maxWidth: '100%',
+        minWidth: 0,
+        width: '100%',
+        padding: 0,
+      }}
+    />
+  );
+}
+
 function useScrollReveal() {
   useEffect(() => {
     const els = document.querySelectorAll('.reveal');
@@ -592,6 +628,7 @@ function Proof() {
 }
 
 function VideoTestimonials() {
+  useInstagramEmbeds();
   return (
     <section className="section" id="video-reviews">
       <div className="container">
@@ -601,24 +638,9 @@ function VideoTestimonials() {
         </div>
         <div className="video-testi-grid reveal">
           {VIDEO_TESTIMONIALS.map((v, i) => (
-            <a
-              key={i}
-              href={v.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="video-testi-card video-testi-card--link"
-            >
-              <div className="video-testi-card__visual">
-                <span className="video-testi-card__ig" aria-hidden>
-                  <svg viewBox="0 0 24 24" width="36" height="36" fill="currentColor" aria-hidden>
-                    <path d="M12 2.2c3.2 0 3.6 0 4.85.07 1.17.05 1.8.25 2.23.41a3.7 3.7 0 0 1 1.38.9 3.7 3.7 0 0 1 .9 1.38c.16.42.36 1.06.41 2.23.06 1.25.07 1.62.07 4.85s0 3.6-.07 4.85c-.05 1.17-.25 1.8-.41 2.23a3.7 3.7 0 0 1-.9 1.38 3.7 3.7 0 0 1-1.38.9c-.42.16-1.06.36-2.23.41-1.25.06-1.62.07-4.85.07s-3.6 0-4.85-.07c-1.17-.05-1.8-.25-2.23-.41a3.7 3.7 0 0 1-1.38-.9 3.7 3.7 0 0 1-.9-1.38c-.16-.42-.36-1.06-.41-2.23C2.2 15.6 2.2 15.23 2.2 12s0-3.6.07-4.85c.05-1.17.25-1.8.41-2.23a3.7 3.7 0 0 1 .9-1.38 3.7 3.7 0 0 1 1.38-.9c.42-.16 1.06-.36 2.23-.41C8.4 2.2 8.77 2.2 12 2.2zm0 1.95c-3.18 0-3.55 0-4.79.07-.99.04-1.53.21-1.88.35-.47.18-.81.4-1.16.75s-.57.69-.75 1.16c-.14.36-.31.9-.35 1.88C3 8.6 3 8.97 3 12s0 3.4.07 4.64c.04.99.21 1.53.35 1.88.18.47.4.81.75 1.16s.69.57 1.16.75c.36.14.9.31 1.88.35C8.45 21 8.82 21 12 21s3.55 0 4.79-.07c.99-.04 1.53-.21 1.88-.35.47-.18.81-.4 1.16-.75s.57-.69.75-1.16c.14-.36.31-.9.35-1.88.07-1.24.07-1.61.07-4.79s0-3.55-.07-4.79c-.04-.99-.21-1.53-.35-1.88a3.07 3.07 0 0 0-.75-1.16 3.07 3.07 0 0 0-1.16-.75c-.36-.14-.9-.31-1.88-.35C15.55 4.15 15.18 4.15 12 4.15zm0 3.32a4.53 4.53 0 1 1 0 9.06 4.53 4.53 0 0 1 0-9.06zm0 1.95a2.58 2.58 0 1 0 0 5.16 2.58 2.58 0 0 0 0-5.16zm4.75-2.05a1.06 1.06 0 1 1 0 2.12 1.06 1.06 0 0 1 0-2.12z"/>
-                  </svg>
-                </span>
-                <span className="video-testi-card__arrow" aria-hidden>↗</span>
-              </div>
-              <div className="video-testi-card__caption">{v.caption}</div>
-              <div className="video-testi-card__cta">View on Instagram →</div>
-            </a>
+            <div key={i} className="video-testi-card video-testi-card--ig">
+              <InstagramEmbed url={v.url} />
+            </div>
           ))}
         </div>
       </div>
