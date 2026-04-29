@@ -353,17 +353,19 @@ a.v2-work-card:hover .v2-work-card__visual-arrow { color: #fff; transform: trans
 /* v2 — Video testimonials: real Instagram embeds via blockquote + embed.js */
 .video-testi-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(326px, 1fr)) !important;
-  gap: 16px;
+  grid-template-columns: repeat(2, 1fr) !important;
+  gap: 18px;
+  max-width: 1040px;
+  margin: 0 auto;
 }
 .video-testi-card {
   border-radius: var(--r-lg);
   overflow: hidden;
   background: var(--bg-1);
   border: 1px solid var(--border);
-  padding: 12px;
+  padding: 14px;
   display: flex;
-  align-items: stretch;
+  align-items: flex-start;
   justify-content: center;
 }
 .video-testi-card--ig .instagram-media {
@@ -372,9 +374,9 @@ a.v2-work-card:hover .v2-work-card__visual-arrow { color: #fff; transform: trans
   max-width: 540px !important;
   margin: 0 !important;
 }
-@media (max-width: 580px) {
+@media (max-width: 760px) {
   .video-testi-grid { grid-template-columns: 1fr !important; gap: 14px; }
-  .video-testi-card { padding: 8px; }
+  .video-testi-card { padding: 10px; }
 }
 
 /* v2 stats — allow long labels like "Same-day" to wrap on small screens */
