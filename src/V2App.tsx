@@ -121,9 +121,28 @@ const PROBLEMS = [
 ];
 
 const WORK = [
-  { tag: 'Raw → Final clip',          title: 'Zoom call → platform-native shorts',  sub: 'Captions, pattern interrupts, and a clear CTA — all from one raw recording.', slot: 'Before / After' },
-  { tag: 'Feed transformation',       title: '1–2 posts/month → 2–3 posts/day',     sub: 'Before: dusty feed. After: structured grid in under 60 days.',                 slot: 'Feed grid' },
-  { tag: 'Multi-platform repurposing',title: 'One 45-min call → 6 content formats', sub: 'IG/TikTok/Shorts, YouTube cut, LinkedIn clips, and carousels — from one session.', slot: 'Repurpose reel' },
+  {
+    tag: 'Raw → Final clip',
+    title: 'Zoom call → platform-native shorts',
+    sub: 'Captions, pattern interrupts, and a clear CTA — all from one raw recording.',
+    slot: 'Before / After',
+    embed: 'https://next.frame.io/share/92482fba-3801-4bcc-ac72-d88308a3603b/view/e83b2710-6c97-48a8-bc5f-a501be888881',
+    embedType: 'frameio' as const,
+  },
+  {
+    tag: 'Feed transformation',
+    title: '1–2 posts/month → 2–3 posts/day',
+    sub: 'Before: dusty feed. After: structured grid in under 60 days.',
+    slot: 'Feed grid',
+    embed: 'https://www.instagram.com/p/DVQyFhHkSYI/embed',
+    embedType: 'instagram' as const,
+  },
+  {
+    tag: 'Multi-platform repurposing',
+    title: 'One 45-min call → 6 content formats',
+    sub: 'IG/TikTok/Shorts, YouTube cut, LinkedIn clips, and carousels — from one session.',
+    slot: 'Repurpose reel',
+  },
 ];
 
 const PROCESS = [
@@ -136,22 +155,24 @@ const PROCESS = [
 
 const PROOF = [
   {
+    sender: 'Danielle',
     msgs: [
-      { out: false, text: "I haven't opened CapCut in weeks. Feels insane.",                         time: '11:02' },
-      { out: true,  text: 'that\'s the goal. record → we ship. keep going',                            time: '11:05' },
-      { out: false, text: 'posted 9 clips last week. 3 hit 10k+',                                       time: '11:06' },
+      { out: false, text: "Good morning everyone! Wanted to share a cool insight this morning for our IG. We noticed this week a 44% increase in our # of followers. We attribute this to the new content as nothing else has changed, this is fabulous news, nice work!", time: '09:27' },
+      { out: true,  text: 'Yeaaaaaa 😊😊😊', time: '09:29' },
     ]
   },
   {
+    sender: 'Marcus',
     msgs: [
-      { out: false, text: 'this is the best hire we\'ve made this year, no joke',                     time: '16:20' },
+      { out: false, text: "this is the best hire we've made this year, no joke",                     time: '16:20' },
       { out: true,  text: 'appreciate that. editor is locked in on your style now',                     time: '16:24' },
-      { out: false, text: 'we\'re probably adding a second seat next month',                           time: '16:25' },
+      { out: false, text: "we're probably adding a second seat next month",                           time: '16:25' },
     ]
   },
   {
+    sender: 'Jenna',
     msgs: [
-      { out: false, text: 'we\'re finally consistent and it\'s not on my plate anymore',              time: '09:44' },
+      { out: false, text: "we're finally consistent and it's not on my plate anymore",              time: '09:44' },
       { out: true,  text: 'that\'s the whole point. you record, we run the play',                      time: '09:46' },
       { out: false, text: 'two client calls this week came straight from the reels 🔥',                 time: '09:47' },
     ]
@@ -160,16 +181,35 @@ const PROOF = [
 
 const CASES = [
   {
-    init: 'BC', role: 'Founder, B2B Coach', rev: '~$80k/month',
-    before: '2–3 random posts a month, editing nights and weekends, no clear content strategy.',
-    after:  '2–3 clips a day across IG, TikTok, and Shorts in 45 days. No more self-editing. More inbound, warmer calls.',
-    afterLabel: 'After editor seat',
+    init: 'AO',
+    name: 'Alek',
+    niche: 'Sales & Marketing',
+    rev: '$70k+/month',
+    goal: 'Wants to reach 200k followers',
+    services: [
+      'Research on viral content (1M+ views last month)',
+      'Editing',
+      'Captions',
+      'Publishing',
+    ],
+    result: '20 hours/week saved + helping him scale faster.',
+    ig: 'https://www.instagram.com/alek.octopus/',
+    igHandle: '@alek.octopus',
   },
   {
-    init: 'SM', role: 'SMMA Agency', rev: '~$150k/month',
-    before: 'Three flaky freelancers, missed deadlines, founder stuck as part-time editor.',
-    after:  'Stable delivery, revision time slashed, founder back in sales and client strategy.',
-    afterLabel: 'After two editor seats',
+    init: 'CM',
+    name: 'Chelsea',
+    niche: 'Health & Fitness',
+    rev: '$150k/month',
+    goal: 'Wants to hit $300k/month before New Year',
+    services: [
+      'Editing',
+      'Captions',
+      'Publishing',
+    ],
+    result: '20 hours/week saved (she was doing all content herself at $150k/month) + helping her scale faster.',
+    ig: 'https://www.instagram.com/chelseamaecullen/',
+    igHandle: '@chelseamaecullen',
   },
 ];
 
@@ -394,27 +434,13 @@ function Pain() {
   );
 }
 
-function BigQuote() {
-  return (
-    <section className="quote-section">
-      <div className="quote-inner reveal">
-        <div className="quote-mark">"</div>
-        <p className="quote-text">
-          You don't need another editor. You need an operator and a system.
-        </p>
-        <div className="quote-attr">— The Cutframe thesis</div>
-      </div>
-    </section>
-  );
-}
-
 function Problem() {
   return (
     <section className="section" id="problem">
       <div className="container">
         <div className="section-header reveal">
           <div className="section-num">The real problem</div>
-          <h2 className="section-h2">Operator &amp; system.<br />Not another freelancer.</h2>
+          <h2 className="section-h2">You don't need another editor.<br />You need an operator and a system.</h2>
         </div>
         <div className="ptable reveal">
           <div className="ptable__head">
@@ -444,16 +470,33 @@ function Work() {
           <h2 className="section-h2">Raw call in →<br />finished content out.</h2>
         </div>
         <div className="v2-work-grid reveal">
-          {WORK.map((w, i) => (
-            <div key={i} className="v2-work-card">
-              <div className="v2-work-card__visual">{w.slot}</div>
-              <div>
-                <div className="v2-work-card__tag">{w.tag}</div>
-                <div className="v2-work-card__title">{w.title}</div>
-                <div className="v2-work-card__sub">{w.sub}</div>
+          {WORK.map((w, i) => {
+            const hasEmbed = 'embed' in w && typeof w.embed === 'string';
+            return (
+              <div key={i} className={`v2-work-card${hasEmbed ? ' v2-work-card--embed' : ''}`}>
+                {hasEmbed ? (
+                  <div className="v2-work-card__visual v2-work-card__visual--embed">
+                    <iframe
+                      src={(w as { embed: string }).embed}
+                      className="v2-work-card__iframe"
+                      frameBorder="0"
+                      scrolling="no"
+                      allow="encrypted-media; autoplay; fullscreen"
+                      allowFullScreen
+                      title={w.title}
+                    />
+                  </div>
+                ) : (
+                  <div className="v2-work-card__visual">{w.slot}</div>
+                )}
+                <div>
+                  <div className="v2-work-card__tag">{w.tag}</div>
+                  <div className="v2-work-card__title">{w.title}</div>
+                  <div className="v2-work-card__sub">{w.sub}</div>
+                </div>
               </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </div>
     </section>
@@ -500,7 +543,7 @@ function Proof() {
           {PROOF.map((t, ti) => (
             <div key={ti} className="testi-card">
               <div className="testi-bar">
-                <span className="testi-bar__platform">Telegram</span>
+                <span className="testi-bar__platform">{t.sender}</span>
                 <span className="testi-bar__online" />
               </div>
               <div className="testi-msgs">
@@ -561,14 +604,29 @@ function Cases() {
               <div className="case-card__head">
                 <div className="case-card__ava">{c.init}</div>
                 <div>
-                  <div className="case-card__role">{c.role}</div>
-                  <div className="case-card__rev">{c.rev}</div>
+                  <div className="case-card__role">
+                    {c.name} · {c.niche}
+                  </div>
+                  <a
+                    className="case-card__handle"
+                    href={c.ig}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    {c.igHandle}
+                  </a>
                 </div>
               </div>
-              <div className="case-card__label">Before</div>
-              <div className="case-card__body">{c.before}</div>
-              <div className="case-card__label">{c.afterLabel}</div>
-              <div className="case-card__body">{c.after}</div>
+              <div className="case-card__rev-line">
+                <span className="case-card__rev">{c.rev}</span>
+                <span className="case-card__goal">{c.goal}</span>
+              </div>
+              <div className="case-card__label">What we do</div>
+              <ul className="case-card__services">
+                {c.services.map((s, i) => <li key={i}>{s}</li>)}
+              </ul>
+              <div className="case-card__label">Result</div>
+              <div className="case-card__body">{c.result}</div>
             </div>
           ))}
         </div>
@@ -729,7 +787,6 @@ export default function V2App() {
       <Marquee items={TICKER_A} />
       <Stats />
       <Pain />
-      <BigQuote />
       <Problem />
       <Work />
       <Marquee items={TICKER_B} reverse />
