@@ -136,28 +136,11 @@ const PROCESS_STEPS = [
   { num: '04', title: 'Revisions until it\'s perfect', desc: 'Unlimited revision rounds. You approve when it\'s right.' },
 ];
 
-const TESTIMONIALS = [
-  {
-    msgs: [
-      { out: false, text: 'the video came out exactly how I imagined it 🔥 literally zero notes',                  time: '14:32' },
-      { out: true,  text: 'love it! CTR is already at 6.8% — strong start',                                        time: '14:35' },
-      { out: false, text: 'my old editor took 5 days minimum. you sent this in 36 hours',                          time: '14:36' },
-    ]
-  },
-  {
-    msgs: [
-      { out: false, text: 'thumbnail redesign made a huge difference. 3.1% → 6.4% CTR in one week',                time: '09:11' },
-      { out: true,  text: 'solid jump. face + contrast is the lever',                                              time: '09:15' },
-      { out: false, text: 'not gonna lie, I had doubts, but you delivered. more projects coming',                  time: '09:16' },
-    ]
-  },
-  {
-    msgs: [
-      { out: false, text: 'week 2 and my feed already looks like a completely different account',                  time: '18:04' },
-      { out: true,  text: 'consistency hits fast. color lock-in was the turning point',                            time: '18:07' },
-      { out: false, text: 'my followers literally asked if I rebranded lol',                                        time: '18:08' },
-    ]
-  },
+const PHOTO_TESTIMONIALS = [
+  { src: 'testimonials/ami-carousel-income.jpg',    tag: 'Income boost',     caption: 'Carousel drove a measurable income boost' },
+  { src: 'testimonials/daryna-quebec-client.jpg',   tag: 'New client',       caption: 'Quebec creative director signed off our content' },
+  { src: 'testimonials/chris-paying-client.jpg',    tag: 'Paying client',    caption: 'Posting content turned into a paying client' },
+  { src: 'testimonials/carter-old-client-back.jpg', tag: 'Strategy call',    caption: 'Old client booked a strategy call from stories' },
 ];
 
 const TEAM = [
@@ -488,24 +471,29 @@ function Testimonials() {
         <div className="section-header reveal">
           <div className="section-num">Testimonials</div>
           <h2 className="section-h2">Real messages.<br />Real results.</h2>
+          <p className="section-sub">Screenshots from clients. Unedited.</p>
         </div>
 
-        <div className="testi-grid reveal">
-          {TESTIMONIALS.map((t, ti) => (
-            <div key={ti} className="testi-card">
-              <div className="testi-bar">
-                <span className="testi-bar__platform">Telegram</span>
-                <span className="testi-bar__online" />
+        <div className="photo-testi-masonry reveal">
+          {PHOTO_TESTIMONIALS.map((p, i) => (
+            <a
+              key={i}
+              href={p.src}
+              target="_blank"
+              rel="noreferrer"
+              className="photo-testi-card"
+              style={{ animationDelay: `${i * 80}ms` }}
+              aria-label={p.caption}
+            >
+              <span className="photo-testi-tag">
+                <span className="photo-testi-tag__dot" />
+                {p.tag}
+              </span>
+              <div className="photo-testi-frame">
+                <img src={p.src} alt={p.caption} loading="lazy" />
               </div>
-              <div className="testi-msgs">
-                {t.msgs.map((msg, mi) => (
-                  <div key={mi} className={`testi-msg${msg.out ? ' testi-msg--out' : ''}`}>
-                    <div className="testi-bubble">{msg.text}</div>
-                    <span className="testi-time">{msg.time}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
+              <span className="photo-testi-caption">{p.caption}</span>
+            </a>
           ))}
         </div>
       </div>
